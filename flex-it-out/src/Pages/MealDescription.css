@@ -1,0 +1,146 @@
+.meal-details {
+    width: 90vw;
+    max-width: 1100px;
+    height: 85vh;
+    margin: 5vh auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Enables scrolling if content overflows */
+}
+
+.meal-details:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.meal-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.meal-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #222;
+    text-transform: capitalize;
+}
+
+.meal-calories {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e44d26;
+    background: #ffe6e2;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.meal-description {
+    font-size: 18px;
+    color: #444;
+    margin: 20px auto;
+    max-width: 80%;
+    line-height: 1.6;
+}
+
+.ingredients-section,
+.instructions-section {
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.ingredients-title,
+.instructions-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #222;
+    border-bottom: 2px solid #e44d26;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.ingredients-list li {
+    font-size: 18px;
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease-in-out;
+}
+
+.ingredients-list li:hover {
+    background: #e3e3e3;
+}
+
+.meal-instructions {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.meal-instructions p {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease-in-out;
+}
+
+.meal-instructions p:hover {
+    background: #e3e3e3;
+}
+
+@media (max-width: 768px) {
+    .meal-details {
+        width: 95vw;
+        height: auto;
+        padding: 20px;
+    }
+
+    .meal-title {
+        font-size: 28px;
+    }
+
+    .meal-calories {
+        font-size: 18px;
+    }
+
+    .meal-description {
+        font-size: 16px;
+    }
+
+    .ingredients-title,
+    .instructions-title {
+        font-size: 20px;
+    }
+
+    .ingredients-list li,
+    .meal-instructions p {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,171 @@
+/* Enhanced videoChat.css */
+
+.video-chat {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Remote video container with grid layout for equal sizing */
+  .remote-video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for all video elements in the remote container */
+  .remote-video-container video {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #1f2937; /* Dark background for empty videos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .remote-video-container video:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Local video container */
+  .local-video-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Local video styling */
+  video[ref="localVideoRef"] {
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #1f2937;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Screen share styling */
+  .screen-share {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background-color: #1f2937;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    display: none;
+  }
+  
+  .screen-share.active {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  /* Controls container */
+  .controls-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+  }
+  
+  /* Button styling */
+  .controls-container .MuiIconButton-root {
+    width: 50px;
+    height: 50px;
+    background-color: #f3f4f6 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+  
+  .controls-container .MuiIconButton-root:hover {
+    transform: scale(1.1);
+    background-color: #e5e7eb !important;
+  }
+  
+  /* Button colors */
+  .controls-container .MuiIconButton-colorPrimary {
+    color: #2563eb !important;
+  }
+  
+  .controls-container .MuiIconButton-colorError {
+    color: #dc2626 !important;
+  }
+  
+  /* Call end button specific styling */
+  .controls-container .MuiIconButton-colorError {
+    background-color: #fee2e2 !important;
+  }
+  
+  .controls-container .MuiIconButton-colorError:hover {
+    background-color: #fecaca !important;
+  }
+  
+  /* Start call button container */
+  .start-call-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+  }
+  
+  /* Start call button styling */
+  .start-call-container .MuiButton-containedPrimary {
+    background-color: #2563eb;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .start-call-container .MuiButton-containedPrimary:hover {
+    background-color: #1d4ed8;
+    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* Snackbar styling */
+  .MuiSnackbar-root .MuiPaper-root {
+    border-radius: 8px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .remote-video-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .controls-container {
+      flex-wrap: wrap;
+    }
+    
+    .controls-container .MuiIconButton-root {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  /* Animation for participant entry/exit */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .remote-video-container video {
+    animation: fadeIn 0.3s ease;
+  }

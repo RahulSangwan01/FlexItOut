@@ -1,0 +1,133 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f39c12;
+  --background-color: #f0f4f8;
+  --text-color: #333;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.pose-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pose-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pose-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.stats-container h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.video-container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video,
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.leaderboard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.leaderboard h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.leaderboard-entry:last-child {
+  border-bottom: none;
+}
+
+.challenges {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.challenges h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.challenge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.challenge:last-child {
+  border-bottom: none;
+}
+
+.challenge-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.challenge-button:hover {
+  background-color: #e67e22;
+}
+

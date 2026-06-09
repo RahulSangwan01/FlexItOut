@@ -1,0 +1,93 @@
+ @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .space-y-2{
+    Color:black;
+  }
+
+  .container {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .card {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .avatar {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .avatar:hover {
+    transform: scale(1.05);
+  }
+  
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #4a5568;
+  }
+  
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #e53e3e;
+  }
+  
+  .card-content > div {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .button {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  
+ /* Force text color to black */
+.MuiTypography-root {
+  color: black !important;
+}
+
+
+
+  
+  
+  @media (max-width: 640px) {
+    .container {
+      padding: 1rem;
+    }
+  }
+  
+   
+
+
+

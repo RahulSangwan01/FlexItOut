@@ -1,0 +1,130 @@
+.fitflex-pricing-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+}
+
+.fitflex-pricing-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fitflex-pricing-card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.fitflex-pricing-card-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2980b9; 
+}
+
+.fitflex-pricing-card-price span {
+  font-size: 1rem;
+  color: #777;
+}
+
+.fitflex-pricing-card-button {
+  background-color: #2980b9; 
+  color: white;
+  border-radius: 4px;
+  padding: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.fitflex-pricing-card-button:hover {
+  background-color: #1e6d98; 
+}
+
+.fitflex-pricing-card-student,
+.fitflex-pricing-card-basic,
+.fitflex-pricing-card-premium {
+  background: linear-gradient(135deg, #404040, #555555, #666666, #808080);
+
+
+  color: white;
+}
+
+.fitflex-pricing-card-student:hover,
+.fitflex-pricing-card-basic:hover,
+.fitflex-pricing-card-premium:hover {
+  background: linear-gradient(135deg, #1f76d2, #2a8ae3, #4c90e0);
+}
+
+
+.fitflex-pricing-popular-tag {
+  background-color: #2980b9; 
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fitflex-pricing-popular-tag svg {
+  margin-right: 8px;
+  color: #fff;
+}
+
+
+.fitflex-pricing-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fitflex-pricing-feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fitflex-pricing-feature-icon {
+  color: #3498db; 
+  margin-right: 8px;
+}
+
+
+.fitflex-pricing-card {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .fitflex-pricing-card {
+    margin-bottom: 15px;
+  }
+
+  .fitflex-pricing-card-header,
+  .fitflex-pricing-card-content {
+    padding: 16px;
+  }
+}
+
+
+.fitflex-pricing-card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.fitflex-pricing-card-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2980b9; 
+}
+
+.fitflex-pricing-card-price span {
+  font-size: 1rem;
+  color: #777;
+} 
+
+

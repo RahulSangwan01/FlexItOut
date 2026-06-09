@@ -1,0 +1,104 @@
+
+
+.battle-container {
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    overflow-y: auto;
+    margin-left: 25%;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.user-list {
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.invite-button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.battle-exercise {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.participants-list {
+    width: 100%;
+    background: #eef;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.participants-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.participant-item {
+    background: #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.start-button {
+    background: #ff4500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}

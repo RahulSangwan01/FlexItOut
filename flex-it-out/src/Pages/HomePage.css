@@ -1,0 +1,553 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #1e3a8a;
+  --accent-color: #f59e0b;
+  --text-color: #e0e0e0;
+  --bg-color: #121212;
+  --card-bg-color: #1e1e1e;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #60A5FA; /* Bright Blue */
+  text-shadow: 2px 2px 10px rgba(96, 165, 250, 0.6), 
+               0 0 20px rgba(96, 165, 250, 0.4); /* Soft glow effect */
+  margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+.hero p {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  max-width: 700px;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.5s;
+  animation-fill-mode: both;
+  color: rgb(215, 214, 214); /* Set the text color to white */
+  text-transform: lowercase; /* Convert text to lowercase */
+}
+
+
+/* Call-To-Action Button */
+.cta-button {
+  padding: 15px 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out 1s;
+  animation-fill-mode: both;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-button .cta-icon {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-icon {
+  transform: translateX(5px);
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 3000px;
+  margin: 0 auto;
+  padding: 0px 20px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+
+  
+  
+}
+
+.feature-card {
+  background-color: var(--card-bg-color);
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: calc(33.333% - 20px);
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  width: 20%;
+
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #3b82f6;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #3b82f6;
+  /* box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); */
+}
+
+.feature-card p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.feature-button {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feature-button:hover {
+  background: var(--secondary-color);
+}
+/* .try{
+  background-image: url("./src/assets/flex12.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+} */
+/* Testimonials Section */
+
+/* Updated Testimonials Section */
+.testimonials {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #2a2a2a, #1e1e1e); /* Dark gray gradient */
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  /* box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);  */
+}
+
+
+.testimonials::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(59, 130, 246, 0.3);
+  filter: blur(100px);
+  top: 15%;
+  left: 10%;
+  z-index: 0;
+}
+
+.testimonials::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(59, 130, 246, 0.2);
+  filter: blur(120px);
+  bottom: 10%;
+  right: 10%;
+  z-index: 0;
+}
+
+.testimonial-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial {
+  background: #1e1e1e; /* Darker gray for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  min-width: 300px;
+  max-width: 2000px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); /* Enhanced blue glow on hover */
+}
+
+.testimonial p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.testimonial span {
+  font-size: 1rem;
+  color: #3b82f6; /* Blue accent */
+  font-weight: 600;
+}
+
+
+
+
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* Centers content vertically */
+  align-items: center;  /* Centers content horizontally */
+  text-align: center;
+  width: 100%;
+  min-height: 60vh;  /* Adjusts height for centering */
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #2a2a2a, #1e1e1e); /* Dark gray gradient */
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px; /* Optional: Gives it a smooth corner effect */
+  /* box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);  */
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(59, 130, 246, 0.3);
+  filter: blur(100px);
+  top: 20%;
+  left: 15%;
+  z-index: 0;
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(59, 130, 246, 0.2);
+  filter: blur(120px);
+  bottom: 10%;
+  right: 10%;
+  z-index: 0;
+}
+
+.cta h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Keep text above glow */
+  font-weight: 300;
+}
+
+
+.cta-subtext {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out 0.5s;
+  animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
+}
+
+
+.cta-button {
+  padding: 15px 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+.cta-button:hover {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.cta-button .cta-icon {
+  transition: transform 0.3s ease;
+}
+
+
+
+.cta-button:hover .cta-icon {
+  transform: translateX(5px);
+}
+
+.cta-button:hover {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cta-button {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.4rem;
+  }
+
+  .feature-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+  }
+
+ 
+
+  .cta h2 {
+    font-size: 2.5rem;
+  }
+}
+.testimonials h2{
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Keep text above glow */
+  font-weight: 300;
+}
+
+
+
+
+
+/* Step 1: Remove extra space between sections */
+.testimonials, .cta-section {
+  margin-bottom: 0; /* Removes unwanted bottom margin */
+  padding-bottom: 30px; /* Ensures smooth transition */
+  border-radius: 0; /* Makes sections align properly */
+}
+
+/* Step 2: Ensure both sections have the same background */
+.testimonials, .cta-section {
+  background: linear-gradient(135deg, #2a2a2a, #1e1e1e); /* Same background */
+}
+
+/* Step 3: Adjust the CTA section */
+.cta-section {
+  padding-top: 20px; /* Reduces extra space at the top */
+  box-shadow: none; /* Removes any shadow causing a separation */
+}
+
+/* Step 4: Reduce spacing before CTA */
+.testimonial-carousel {
+  margin-bottom: 30px; /* Smooth transition before CTA section */
+}
+
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  text-align: center;
+  width: 100%;
+  min-height: 60vh;  
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px;
+}
+
+
+.content-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(59, 130, 246, 0.3);
+  filter: blur(100px);
+  top: 20%;
+  left: 15%;
+  z-index: 0;
+}
+
+.content-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(59, 130, 246, 0.2);
+  filter: blur(120px);
+  bottom: 10%;
+  right: 10%;
+  z-index: 0;
+}

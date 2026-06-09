@@ -1,0 +1,107 @@
+/* Centered Auth Container */
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 80px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); /* Blue Glow */
+    background: linear-gradient(135deg, #1E1E1E, #141414); /* Dark Gray to Black */
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.auth-container:hover {
+    transform: translateY(-2px);
+}
+
+/* Heading */
+h2 {
+    color: #3B82F6; /* Bright Blue */
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.auth-container h2 {
+    color: #3B82F6;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #3B82F6; /* Blue Border */
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: #222; /* Dark Background */
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #3B82F6; /* Keep Blue */
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+}
+
+/* Button */
+button {
+    background: linear-gradient(135deg, #3B82F6, #1E3A8A) !important; /* Blue Gradient */
+    color: white !important;
+    padding: 14px;
+    font-size: 17px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1E3A8A, #172554) !important; /* Darker Blue */
+    transform: scale(1.05);
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.8);
+}
+
+/* Error Message */
+.error {
+    color: #3B82F6; /* Blue Error Text */
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Text */
+p {
+    margin-top: 15px;
+    font-size: 15px;
+    color: white;
+}
+
+/* Links */
+a {
+    color: #3B82F6; /* Blue */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1e3a8a; /* Darker Blue */
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .auth-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
