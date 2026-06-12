@@ -74,30 +74,30 @@ const EditProfile = () => {
 
     try {
       if (type === "name") {
-        await axios.put("https://flex-it-out-backend-1.onrender.com/api/user/profile", 
-          { name: formData.name }, 
+        await axios.put(`${API_URL}/api/user/profile`,
+          { name: formData.name },
           { headers: { Authorization: `Bearer ${token}` } }
         );
         navigate("/profile", { state: { message: "Name updated successfully!" } });
-      } 
+      }
       else if (type === "email") {
         if (formData.email === originalEmail) {
           setError("New email must be different from the current email.");
           return;
         }
 
-        const res = await axios.post("https://flex-it-out-backend-1.onrender.com/api/email/request-email-change", 
+        const res = await axios.post(`${API_URL}/api/email/request-email-change`,
           { newEmail: formData.email },
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
         setSuccess(res.data.message);
-      } 
+      }
       else if (type === "profileImage") {
         const formDataToSend = new FormData();
         formDataToSend.append("profileImage", formData.profileImage);
 
-        await axios.put("https://flex-it-out-backend-1.onrender.com/api/user/profile", formDataToSend, {
+        await axios.put(`${API_URL}/api/user/profile`, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

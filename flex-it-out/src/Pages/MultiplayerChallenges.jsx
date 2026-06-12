@@ -50,9 +50,6 @@ const MultiplayerChallenges = () => {
   };
 
   const handleInvite = async (inviteeId, exerciseId ) => {
-    console.log(inviteeId, exerciseId)
-    console.log(userId)
-    
     try {
       const response = await axios.post(
         `${API_URL}/api/users/invite`,

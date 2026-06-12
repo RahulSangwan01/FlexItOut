@@ -14,7 +14,7 @@ const API_URL =
     : "http://localhost:5001";
 
 
-const stripePromise = loadStripe("pk_test_51QrIYaP7TDcxXgwZjsg5PRmU9NAATaVt87I42XPl2gLOjSRd2Jw2qxgo1bGKMCkJbau5oKHcEHuqgeSbaoahbk2G00H4yaXvcf");
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || "");
 
 const PaymentPage = () => {
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,6 @@ const PaymentPage = () => {
       const { id } = await response.json();
       if (!id) throw new Error("Invalid response from server");
   
-      console.log("🔹 Redirecting to Stripe Checkout with session:", id);
       await stripe.redirectToCheckout({ sessionId: id });
     } catch (error) {
       console.error("❌ Payment Error:", error.message);

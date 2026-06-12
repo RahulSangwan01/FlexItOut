@@ -25,8 +25,7 @@ import MultiPlayerChallenges from "./Pages/MultiplayerChallenges"
 import MultiBattle from './Components/MultiplayerBattle'
 
 function App() {
-  const { membership} = useContext(AuthContext); 
-   console.log(membership);
+  const { membership } = useContext(AuthContext);
   return (
     <>
       <Navbar />
@@ -43,7 +42,6 @@ function App() {
           path="/nutrition"
           element={ membership === "premium" ? <NutritionPage /> : <PricingPlans />}
         />
-     
         <Route
             path="/community"
             element={ membership === "premium" ? <CommunityPage /> : <PricingPlans/>}
@@ -56,7 +54,6 @@ function App() {
         <Route path="/meal/:mealId" element={<MealPage />} />
         <Route path="/video-chat/:id" element={<VideoChat />} />
         <Route path="/track-progress" element={<TrackProgressPage />} />
-        <Route path="/community" element={<CommunityPage />} />
         <Route path="/group/:id" element={<GroupPage />} />
         <Route path="/multiplayer-challenges" element={<MultiPlayerChallenges />} />
         <Route path="/multiplayer-battle/:roomId" element={<MultiBattle />} />

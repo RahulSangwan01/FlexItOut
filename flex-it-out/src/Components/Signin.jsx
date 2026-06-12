@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { GiBiceps } from "react-icons/gi";
-import "./Auth.css"; // ✅ shared auth stylesheet
+import "./Signup.css"; // ✅ shared auth stylesheet
 
 // ✅ Fixed: correct API_URL logic
 const API_URL =

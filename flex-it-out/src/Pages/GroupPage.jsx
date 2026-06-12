@@ -21,6 +21,8 @@ const GroupPage = () => {
   const [joined, setJoined] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
@@ -29,16 +31,19 @@ const GroupPage = () => {
   useEffect(() => {
     const fetchGroup = async () => {
       try {
+        setLoading(true);
+        setError("");
         const response = await axios.get(`${SOCKET_URL}/api/group/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        console.log("Group Data:", response.data);
         setGroup(response.data);
         setMessages(response.data.messages || []);
         setJoined(response.data.isMember);
       } catch (error) {
-        console.error("Failed to fetch group data", error);
+        setError("Failed to load group data. Please try again.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -59,14 +64,13 @@ const GroupPage = () => {
   // 🔹 Listen for real-time messages
   useEffect(() => {
     const handleNewMessage = (message) => {
-      console.log("New message received:", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     };
 
     socket.on("newMessage", handleNewMessage);
 
     return () => {
-      socket.off("newMessage", handleNewMessage); // Proper cleanup
+      socket.off("newMessage", handleNewMessage);
     };
   }, []);
 
