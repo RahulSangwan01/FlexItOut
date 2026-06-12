@@ -9,16 +9,34 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
+// ✅ Allowed Origins
+const allowedOrigins = [
+  "https://flexitout.vercel.app",
+  "http://localhost:5173",
+];
+
 // ✅ Configure CORS Middleware
 app.use(cors({
-  origin: "https://flexitout.vercel.app",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true,
 }));
 
+// ✅ Parse JSON Bodies (MUST be before routes)
+app.use(express.json());
+
 // ✅ Manually Set CORS Headers
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://flexitout.vercel.app");
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -31,7 +49,7 @@ app.use((req, res, next) => {
 // ✅ Initialize Socket.io
 const io = new Server(server, {
   cors: {
-    origin: "https://flexitout.vercel.app",
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -49,8 +67,6 @@ const workoutRoutes = require("./routes/workoutRoutes");
 const mealRoutes = require("./routes/fetchmealsRouter");
 const videoRoutes = require("./routes/videoRoutes");
 const groupRoutes = require("./routes/groupRoutes");
-
-app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/activity", activityRoutes);
@@ -71,15 +87,15 @@ app.use((err, req, res, next) => {
 });
 
 // ✅ MongoDB Connection
+//console.log("MONGO_URI =", process.env.MONGO_URI);
+
 mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000,
 })
 .then(() => console.log("✅ MongoDB Connected"))
 .catch((err) => {
-  console.error("❌ MongoDB Connection Error:", err);
-  process.exit(1); // Exit if MongoDB connection fails
+  console.error("❌ MongoDB Connection Error:", err.message);
+  // Not exiting process so server stays alive for non-DB route testing
 });
 
 // ✅ Socket.io - Real-Time Chat

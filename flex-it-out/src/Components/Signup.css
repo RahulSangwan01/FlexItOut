@@ -1,107 +1,189 @@
-/* Centered Auth Container */
+/* ── Auth Pages (SignIn + SignUp) ── */
+
+/* Page wrapper — centers the card vertically */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d1a;
+  padding: 24px 16px;
+}
+
+/* Card */
 .auth-container {
-    width: 100%;
-    max-width: 420px;
-    margin: 80px auto;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); /* Blue Glow */
-    background: linear-gradient(135deg, #1E1E1E, #141414); /* Dark Gray to Black */
-    text-align: center;
-    transition: transform 0.3s;
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px;
+  border-radius: 20px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: fadeUp 0.35s ease;
 }
 
-.auth-container:hover {
-    transform: translateY(-2px);
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Heading */
-h2 {
-    color: #3B82F6; /* Bright Blue */
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
+/* Logo mark above heading */
+.auth-logo {
+  font-size: 36px;
+  color: #f97316;
+  margin-bottom: 8px;
 }
 
+/* Heading — scoped to auth-container to avoid global h2 bleed */
 .auth-container h2 {
-    color: #3B82F6;
+  font-size: 24px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.auth-tagline {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 28px;
 }
 
 /* Form */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
 }
 
-/* Input Fields */
-input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #3B82F6; /* Blue Border */
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    background: #222; /* Dark Background */
-    color: white;
-    transition: all 0.3s ease-in-out;
+/* Label */
+.auth-container label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+  display: block;
 }
 
-input:focus {
-    border-color: #3B82F6; /* Keep Blue */
-    box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-/* Button */
-button {
-    background: linear-gradient(135deg, #3B82F6, #1E3A8A) !important; /* Blue Gradient */
-    color: white !important;
-    padding: 14px;
-    font-size: 17px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6);
+/* Input — scoped so global input styles don't bleed */
+.auth-container input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: #0f172a;
+  color: #f1f5f9;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
-button:hover {
-    background: linear-gradient(135deg, #1E3A8A, #172554) !important; /* Darker Blue */
-    transform: scale(1.05);
-    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.8);
+.auth-container input::placeholder {
+  color: #475569;
 }
 
-/* Error Message */
-.error {
-    color: #3B82F6; /* Blue Error Text */
-    font-size: 15px;
-    margin-bottom: 10px;
+.auth-container input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18);
 }
 
-/* Text */
-p {
-    margin-top: 15px;
-    font-size: 15px;
-    color: white;
+/* Submit button — scoped */
+.auth-container button[type="submit"],
+.auth-submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #fff;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.35);
+  margin-top: 6px;
 }
 
-/* Links */
-a {
-    color: #3B82F6; /* Blue */
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
+.auth-container button[type="submit"]:hover,
+.auth-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.45);
 }
 
-a:hover {
-    text-decoration: underline;
-    color: #1e3a8a; /* Darker Blue */
+.auth-container button[type="submit"]:disabled,
+.auth-submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
 }
 
-/* Responsive Design */
+/* Error message */
+.auth-container .error {
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+/* Footer link */
+.auth-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.auth-container a {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.auth-container a:hover {
+  color: #fb923c;
+  text-decoration: underline;
+}
+
+/* Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.auth-divider span {
+  font-size: 12px;
+  color: #475569;
+}
+
 @media (max-width: 480px) {
-    .auth-container {
-        width: 90%;
-        padding: 20px;
-    }
+  .auth-container {
+    padding: 28px 20px;
+  }
 }

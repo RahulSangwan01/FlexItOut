@@ -1,182 +1,270 @@
+/* ── Leaderboard ── */
 .clb-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 760px;
+  margin: 32px auto;
+  padding: 32px 28px;
+  background: #1a1a2e;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.clb-title {
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #f1f5f9;
+  letter-spacing: 0.4px;
+}
+
+.clb-subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Time frame tabs */
+.clb-time-frame {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.clb-time-frame-btn {
+  padding: 8px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: #94a3b8;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  width: auto;
+  margin-top: 0;
+}
+
+.clb-time-frame-btn:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: #f97316;
+}
+
+.clb-time-frame-btn.clb-active {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+}
+
+/* Loading */
+.clb-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #64748b;
+  gap: 12px;
+}
+
+.clb-loading-icon {
+  animation: spin 1s linear infinite;
+  color: #f97316;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error */
+.clb-error {
+  color: #f87171;
+  text-align: center;
+  font-weight: 600;
+  padding: 20px;
+  background: rgba(248, 113, 113, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+/* Table */
+.clb-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.clb-table thead tr th {
+  text-align: left;
+  padding: 10px 16px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Rows */
+.clb-row {
+  background: #0f172a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clb-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.clb-row td {
+  padding: 14px 16px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.clb-row td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.clb-row td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Podium rows */
+.clb-top-1 {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.12), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(255, 215, 0, 0.18);
+}
+
+.clb-top-2 {
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.1), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(192, 192, 192, 0.15);
+}
+
+.clb-top-3 {
+  background: linear-gradient(90deg, rgba(205, 127, 50, 0.1), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(205, 127, 50, 0.15);
+}
+
+/* Rank cell */
+.clb-rank {
+  font-weight: 700;
+  font-size: 15px;
+  color: #f1f5f9;
+}
+
+.clb-trophy {
+  width: 20px;
+  height: 20px;
+}
+
+.clb-trophy-1 { color: #ffd700; }
+.clb-trophy-2 { color: #c0c0c0; }
+.clb-trophy-3 { color: #cd7f32; }
+
+/* Player cell */
+.clb-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clb-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #1e293b;
+}
+
+.clb-avatar-placeholder {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.clb-name {
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Score cell */
+.clb-score {
+  font-weight: 700;
+  font-size: 15px;
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clb-medal {
+  width: 16px;
+  height: 16px;
+  color: #ffd700;
+}
+
+/* Date cell */
+.clb-date {
+  color: #475569;
+  font-size: 13px;
+}
+
+/* Empty state */
+.clb-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: #475569;
+}
+
+.clb-empty-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.clb-empty p {
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .clb-container {
+    padding: 20px 14px;
+    margin: 16px;
+    border-radius: 16px;
   }
-  
-  .clb-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
+
+  .clb-table thead {
+    display: none;
   }
-  
-  .clb-time-frame {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .clb-time-frame-btn {
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border: none;
-    background-color: #e9ecef;
-    color: #495057;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .clb-time-frame-btn:hover {
-    background-color: #dee2e6;
-  }
-  
-  .clb-time-frame-btn.clb-active {
-    background-color: #007bff;
-    color: #ffffff;
-  }
-  
-  .clb-loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-  }
-  
-  .clb-loading-icon {
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .clb-error {
-    color: #dc3545;
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  .clb-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 0.5rem;
-  }
-  
-  .clb-table th {
-    text-align: left;
-    padding: 1rem;
-    background-color: #007bff;
-    color: #ffffff;
-    font-weight: 600;
-  }
-  
-  .clb-table th:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  
-  .clb-table th:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  
-  .clb-row {
-    background-color: #ffffff;
-    transition: all 0.3s ease;
-  }
-  
-  .clb-row:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+
   .clb-row td {
-    padding: 1rem;
+    display: block;
+    padding: 6px 14px;
   }
-  
+
   .clb-row td:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 12px 12px 0 0;
+    padding-top: 12px;
   }
-  
+
   .clb-row td:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 0 0 12px 12px;
+    padding-bottom: 12px;
   }
-  
-  .clb-top-1 {
-    background-color: #ffd700;
-  }
-  
-  .clb-top-2 {
-    background-color: #c0c0c0;
-  }
-  
-  .clb-top-3 {
-    background-color: #cd7f32;
-  }
-  
-  .clb-rank {
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-  
-  .clb-trophy {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .clb-trophy-1 {
-    color: #ffd700;
-  }
-  
-  .clb-trophy-2 {
-    color: #c0c0c0;
-  }
-  
-  .clb-trophy-3 {
-    color: #cd7f32;
-  }
-  
-  .clb-player {
-    display: flex;
-    align-items: center;
-  }
-  
-  .clb-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 0.5rem;
-  }
-  
-  .clb-score {
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-  
-  .clb-medal {
-    width: 16px;
-    height: 16px;
-    margin-left: 0.5rem;
-    color: #ffd700;
-  }
-  
-  .clb-date {
-    color: #6c757d;
-  }
-  
-  
+}

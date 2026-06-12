@@ -5,150 +5,162 @@ import { FaBell } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthContext";
 import "./Navbar.css";
 
+// ✅ Fixed: correct API_URL logic
 const API_URL =
-  import.meta.env.VITE_API_URL_PRODUCTION && import.meta.env.VITE_API_URL_TESTING
-    ? (import.meta.env.MODE === "production"
-      ? import.meta.env.VITE_API_URL_PRODUCTION
-      : import.meta.env.VITE_API_URL_TESTING)
-    : "http://localhost:5001";
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_API_URL_PRODUCTION
+    : import.meta.env.VITE_API_URL_TESTING || "http://localhost:5001";
 
 const Navbar = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [invites, setInvites] = useState([]);
-    const [showInvites, setShowInvites] = useState(false);
-    const { isLoggedIn, signOut, username } = useContext(AuthContext);
-    const notificationRef = useRef(null);
-    const navigate = useNavigate()
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [invites, setInvites] = useState([]);
+  const [showInvites, setShowInvites] = useState(false);
+  const { isLoggedIn, signOut, username } = useContext(AuthContext);
+  const notificationRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            fetch(`${API_URL}/api/users/invites`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log("Fetched Invites:", data);
-                    setInvites(data);
-                })
-                .catch((err) => console.error("Error fetching invites:", err));
-        }
-    }, [isLoggedIn]);
+  // ✅ Fetch invites when logged in
+  useEffect(() => {
+    if (!isLoggedIn) return;
 
-    const handleLogout = () => {
-        signOut();
+    const fetchInvites = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/users/invites`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (!res.ok) throw new Error("Failed to fetch invites");
+        const data = await res.json();
+        setInvites(data);
+      } catch (err) {
+        console.error("Error fetching invites:", err);
+      }
+    };
+
+    fetchInvites();
+  }, [isLoggedIn]);
+
+  // ✅ Fixed: close both dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (notificationRef.current && !notificationRef.current.contains(e.target)) {
+        setShowInvites(false);
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsDropdownOpen(false);
-        setMenuOpen(false);
+      }
     };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen((prev) => !prev);
-    };
+  const handleLogout = () => {
+    signOut();
+    setIsDropdownOpen(false);
+    setMenuOpen(false);
+    navigate("/signin");
+  };
 
-    const toggleMenu = () => {
-        setMenuOpen((prev) => !prev);
-    };
+  const goToMultiplayerBattle = (roomId, exerciseId) => {
+    if (!roomId) {
+      console.error("No roomId for this invite");
+      return;
+    }
+    setShowInvites(false);
+    navigate(`/multiplayer-battle/${roomId}?exercise=${exerciseId}`);
+  };
 
-    const toggleInvites = (e) => {
-        e.stopPropagation();
-        console.log("Toggling invites dropdown");
-        setShowInvites((prev) => !prev);
-    };
+  return (
+    <nav className="navbar">
+      {/* Brand */}
+      <div className="navbar-brand">
+        <Link to="/">
+          <GiBiceps className="logo-icon" /> FLEX IT OUT
+        </Link>
+      </div>
 
-    // Close invites when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (notificationRef.current && !notificationRef.current.contains(event.target)) {
-                setShowInvites(false);
-            }
-        };
+      {/* Nav Links */}
+      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <Link to="/workout" onClick={() => setMenuOpen(false)}>Workout</Link>
+        <Link to="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link>
 
-        if (showInvites) {
-            document.addEventListener("click", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, [showInvites]);
-
-    const goToMultiplayerBattle = (roomId, exerciseId) => {
-        if (roomId) {
-            navigate(`/multiplayer-battle/${roomId}?exercise=${exerciseId}`);
-        } else {
-            console.error("No roomId found for this invite");
-        }
-    };
-    
-
-    return (
-        <nav className="navbar">
-            <div className="navbar-brand">
-                <Link to="/">
-                    <GiBiceps className="logo-icon" /> FLEX IT OUT
-                </Link>
-            </div>
-
-            <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-                <Link to="/workout" onClick={() => setMenuOpen(false)}>Workout</Link>
-                <Link to="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</Link>
-
-                {isLoggedIn && (
-                    <div className="bell-icon-container">
-                        <FaBell className="bell-icon" onClick={toggleInvites} style={{ cursor: "pointer" }} />
-                        {invites.length > 0 && <span className="invite-count">{invites.length}</span>}
-                    </div>
-                )}
-
-                {isLoggedIn ? (
-                    <>
-                        <span className="username" onClick={toggleDropdown}>
-                            {username || "User"}
-                        </span>
-                        {isDropdownOpen && (
-                            <div className="dropdown-menu">
-                                <Link to="/profile" onClick={() => setMenuOpen(false)}>Account Information</Link>
-                                <button onClick={handleLogout}>Logout</button>
-                            </div>
-                        )}
-                    </>
-                ) : (
-                    <Link to="/Signin" onClick={() => setMenuOpen(false)}>Sign In</Link>
-                )}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className={`menu-toggle ${menuOpen ? "active" : ""}`} onClick={toggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            {/* Notification Panel */}
-            {showInvites && (
-                <div className="notification-panel" ref={notificationRef}>
-                    <h3>Invites</h3>
-                    {invites.length > 0 ? (
-                        invites.map((invite, index) => (
-                            <div
-                                key={index}
-                                className="invite-item"
-                                onClick={() => goToMultiplayerBattle(invite.roomId, invite.challengeType)}
-                            >
-                                {invite.message || `Challenge from ${invite.sender?.name || "Unknown"} (${invite.challengeType})`}
-                            </div>
-                        ))
-                    ) : (
-                        <div className="invite-item">No invites</div>
-                    )}
-                </div>
+        {isLoggedIn && (
+          // ✅ Notification bell
+          <div
+            className="bell-icon-container"
+            ref={notificationRef}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowInvites((prev) => !prev);
+            }}
+          >
+            <FaBell className="bell-icon" />
+            {invites.length > 0 && (
+              <span className="invite-count">{invites.length}</span>
             )}
-        </nav>
-    );
+          </div>
+        )}
+
+        {isLoggedIn ? (
+          <div ref={dropdownRef} style={{ position: "relative" }}>
+            <span className="username" onClick={() => setIsDropdownOpen((p) => !p)}>
+              {username || "User"}
+            </span>
+
+            {isDropdownOpen && (
+              <div className="dropdown-menu">
+                <Link to="/profile" onClick={() => { setIsDropdownOpen(false); setMenuOpen(false); }}>
+                  Account
+                </Link>
+                <div className="dropdown-divider" />
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link to="/signin" className="signin-btn" onClick={() => setMenuOpen(false)}>
+            Sign In
+          </Link>
+        )}
+      </div>
+
+      {/* Hamburger */}
+      <div
+        className={`menu-toggle ${menuOpen ? "active" : ""}`}
+        onClick={() => setMenuOpen((p) => !p)}
+      >
+        <span />
+        <span />
+        <span />
+      </div>
+
+      {/* Notification Panel — outside nav-links so it's always visible */}
+      {showInvites && (
+        <div className="notification-panel">
+          <h3>Invites</h3>
+          {invites.length > 0 ? (
+            invites.map((invite, index) => (
+              <div
+                key={index}
+                className="invite-item"
+                onClick={() => goToMultiplayerBattle(invite.roomId, invite.challengeType)}
+              >
+                🏋️{" "}
+                {invite.message ||
+                  `Challenge from ${invite.sender?.name || "Someone"} · ${invite.challengeType}`}
+              </div>
+            ))
+          ) : (
+            <div className="invite-item empty">No pending invites</div>
+          )}
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;
