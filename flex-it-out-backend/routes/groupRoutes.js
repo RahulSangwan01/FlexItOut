@@ -1,5 +1,5 @@
 const express = require("express");
-const authenticateUser = require("../Middleware/authMiddleware")
+const authenticateUser = require("../middleware/authMiddleware")
 const {
   createGroup,
   getAllGroups,
