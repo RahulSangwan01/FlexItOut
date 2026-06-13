@@ -7,7 +7,7 @@ const PricingPage = () => {
   const navigate = useNavigate();
 
   const handlePayment = (plan) => {
-    navigate(`/payment?plan=${plan}`);
+    navigate(`/payment?plan=${plan}&from=pricing`);
   };
 
   const plans = [

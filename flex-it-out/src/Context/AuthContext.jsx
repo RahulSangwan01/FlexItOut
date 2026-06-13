@@ -50,6 +50,11 @@ export const AuthProvider = ({ children }) => {
     setMembership("");
   };
 
+  const updateMembership = (plan) => {
+    localStorage.setItem("membership", plan);
+    setMembership(plan);
+  };
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, signIn, signOut, username, userId, membership }}>
       {children}

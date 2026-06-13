@@ -13,48 +13,56 @@ const API_URL =
       : import.meta.env.VITE_API_URL_TESTING)
     : "http://localhost:5001";
 
-
+console.log("Stripe Key:", import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+console.log("Mode:", import.meta.env.MODE);
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || "");
 
 const PaymentPage = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [searchParams] = useSearchParams();
   const plan = searchParams.get("plan");
+  const fromPage = searchParams.get("from") || "home";
 
   const { userId, isLoggedIn } = useContext(AuthContext);
   const handlePayment = async () => {
     if (!isLoggedIn || !userId) {
-      alert("You must be logged in to make a payment.");
+      setError("You must be logged in to make a payment.");
       return;
     }
 
     setLoading(true);
+    setError("");
     const stripe = await stripePromise;
-  
+
     try {
       const response = await fetch(`${API_URL}/api/checkout/create-checkout-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan, userId }),
+        body: JSON.stringify({ plan, userId, fromPage }),
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Payment session failed");
       }
-  
+
       const { id } = await response.json();
       if (!id) throw new Error("Invalid response from server");
-  
-      await stripe.redirectToCheckout({ sessionId: id });
-    } catch (error) {
-      console.error("❌ Payment Error:", error.message);
-      alert(`Payment Error: ${error.message}`);
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: id,
+      });
+
+      if (result?.error) {
+        throw new Error(result.error.message);
+      }
+    } catch (err) {
+      setError(err.message || "Payment failed. Please try again.");
+      setLoading(false);
     }
-  
-    setLoading(false);
   };
-  
+
 
   return (
     <motion.div
@@ -70,6 +78,15 @@ const PaymentPage = () => {
         <motion.p initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}>
           You selected: <strong>{plan?.toUpperCase()}</strong>
         </motion.p>
+        {error && (
+          <motion.div
+            className="payment-error"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {error}
+          </motion.div>
+        )}
         <motion.button
           onClick={handlePayment}
           disabled={loading}

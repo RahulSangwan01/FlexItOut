@@ -23,7 +23,7 @@ const prices = {
 // ✅ Create Stripe Checkout Session
 router.post("/create-checkout-session", async (req, res) => {
   try {
-    const { plan, userId } = req.body;
+    const { plan, userId, fromPage } = req.body;
 
     if (!prices[plan]) {
       return res.status(400).json({ error: "Invalid plan selected" });
@@ -33,7 +33,7 @@ router.post("/create-checkout-session", async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      metadata: { userId, plan }, // Store user ID and plan in metadata
+      metadata: { userId, plan, fromPage: fromPage || "home" },
       line_items: [
         {
           price_data: {

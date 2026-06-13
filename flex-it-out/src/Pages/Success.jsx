@@ -16,14 +16,16 @@ const SuccessPage = () => {
   const [message, setMessage] = useState("Verifying payment...");
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("session_id");
+  const fromPage = searchParams.get("from") || "home";
   const { userId } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     const verifyPayment = async () => {
-      if (!sessionId || !userId) {
+      if (!sessionId) {
         setMessage("Invalid session. Please try again.");
         setLoading(false);
+        setTimeout(() => navigate("/"), 3000);
         return;
       }
 
@@ -32,20 +34,23 @@ const SuccessPage = () => {
         const data = await response.json();
 
         if (response.ok) {
+          localStorage.setItem("membership", "premium");
           setMessage("✅ Payment Successful! Membership updated.");
-          setTimeout(() => navigate("/"), 3000); // Redirect after 3 sec
+          const redirectPath = fromPage === "pricing" ? "/pricing" : "/";
+          setTimeout(() => navigate(redirectPath), 3000);
         } else {
           setMessage(`❌ Payment verification failed: ${data.error}`);
+          setTimeout(() => navigate("/pricing"), 3000);
         }
       } catch (error) {
         setMessage("❌ Error verifying payment. Please contact support.");
-        console.error("Payment Verification Error:", error);
+        setTimeout(() => navigate("/pricing"), 3000);
       }
       setLoading(false);
     };
 
     verifyPayment();
-  }, [sessionId, userId, navigate]);
+  }, [sessionId, userId, navigate, fromPage]);
 
   return (
     <motion.div className="success-page-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
