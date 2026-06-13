@@ -7,29 +7,37 @@
 }
 
 :root {
-  --primary: #3b82f6;
-  --primary-light: #60a5fa;
-  --primary-dark: #1e3a8a;
-  --accent: #f97316;
-  --accent-light: #fb923c;
+  --primary: #ff6b35;
+  --primary-light: #ff8c5a;
+  --primary-dark: #cc4f1f;
+  --energy: #ff9f1c;
+  --energy-light: #ffb84d;
+  --success: #00d4aa;
+  --success-dark: #00a884;
+  --accent: #7c3aed;
+  --accent-light: #9d5cf5;
   --danger: #ef4444;
-  --success: #10b981;
+  --info: #3b82f6;
   --warning: #f59e0b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --border-color: rgba(255, 255, 255, 0.06);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --text-primary: #f0f6fc;
+  --text-secondary: #c9d1d9;
+  --text-muted: #8b949e;
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --border-color: rgba(255, 255, 255, 0.07);
+  --border-orange: rgba(255, 107, 53, 0.15);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --glow-primary: 0 8px 24px rgba(255, 107, 53, 0.35);
+  --glow-energy: 0 8px 24px rgba(255, 159, 28, 0.35);
+  --glow-success: 0 8px 24px rgba(0, 212, 170, 0.35);
+  --glow-accent: 0 8px 24px rgba(124, 58, 237, 0.35);
 }
 
-html,
-body {
+html, body {
   width: 100%;
   height: 100%;
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -47,9 +55,9 @@ body {
   background: var(--bg-primary);
 }
 
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 /* GLOBAL BUTTON STYLES */
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 
 button {
   display: inline-flex;
@@ -78,13 +86,11 @@ button:active:not(:disabled) {
   transform: scale(0.98);
 }
 
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 /* GLOBAL INPUT STYLES */
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 
-input,
-textarea,
-select {
+input, textarea, select {
   font-family: inherit;
   font-size: 1rem;
   background: var(--bg-secondary);
@@ -95,23 +101,20 @@ select {
   transition: all 0.2s ease;
 }
 
-input::placeholder,
-textarea::placeholder {
+input::placeholder, textarea::placeholder {
   color: var(--text-muted);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
   background: var(--bg-secondary);
 }
 
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 /* GLOBAL TEXT STYLES */
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -120,34 +123,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-h1 {
-  font-size: 2.5rem;
-}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
 
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-}
-
-h5 {
-  font-size: 1.1rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
-p {
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
+p { color: var(--text-secondary); line-height: 1.7; }
 
 a {
   color: var(--primary);
@@ -156,13 +139,13 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
+  color: var(--energy);
   text-decoration: underline;
 }
 
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 /* UTILITY CLASSES */
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 
 .container {
   width: 100%;
@@ -178,115 +161,44 @@ a:hover {
   padding: 0 40px;
 }
 
-.text-center {
-  text-align: center;
-}
+.text-center { text-align: center; }
+.text-muted   { color: var(--text-muted); }
+.text-primary { color: var(--text-primary); }
+.text-accent  { color: var(--primary); }
+.text-energy  { color: var(--energy); }
+.text-success { color: var(--success); }
 
-.text-muted {
-  color: var(--text-muted);
-}
+.mt { margin-top: 20px; }
+.mb { margin-bottom: 20px; }
+.my { margin-top: 20px; margin-bottom: 20px; }
+.px { padding-left: 20px; padding-right: 20px; }
+.py { padding-top: 20px; padding-bottom: 20px; }
 
-.text-primary {
-  color: var(--text-primary);
-}
+/* ═══════════════════════════════════════════════════════ */
+/* SCROLLBAR */
+/* ═══════════════════════════════════════════════════════ */
 
-.text-accent {
-  color: var(--accent);
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
-.mt {
-  margin-top: 20px;
-}
-
-.mb {
-  margin-bottom: 20px;
-}
-
-.my {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.px {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.py {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-/* ═══════════════════════════════════════════════════════════════ */
-/* SCROLLBAR STYLING */
-/* ═══════════════════════════════════════════════════════════════ */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 /* RESPONSIVE */
-/* ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .container,
-  .container-sm {
-    padding: 0 20px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-  }
-
-  button {
-    padding: 10px 16px;
-    font-size: 0.95rem;
-  }
+  .container, .container-sm { padding: 0 20px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  button { padding: 10px 16px; font-size: 0.95rem; }
 }
 
 @media (max-width: 480px) {
-  .container,
-  .container-sm {
-    padding: 0 16px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  button {
-    padding: 10px 14px;
-    font-size: 0.9rem;
-  }
+  .container, .container-sm { padding: 0 16px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1rem; }
+  button { padding: 10px 14px; font-size: 0.9rem; }
 }

@@ -1,18 +1,17 @@
-/* Payment Page Styles */
 :root {
-  --payment-primary-color: #3b82f6;
-  --payment-secondary-color: #1e3a8a;
-  --payment-accent-color: #f59e0b;
-  --payment-text-color: #333;
-  --payment-bg-color: #f5f5f5;
-  --payment-card-bg-color: #fff;
+  --payment-primary: #ff6b35;
+  --payment-primary-dark: #cc4f1f;
+  --payment-energy: #ff9f1c;
+  --payment-success: #00d4aa;
+  --payment-bg: #0d1117;
+  --payment-card-bg: #161b22;
 }
 
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: var(--payment-bg-color);
-  color: var(--payment-text-color);
+  background: var(--payment-bg);
+  color: #f0f6fc;
 }
 
 .payment-page-container {
@@ -20,37 +19,71 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--payment-primary-color), var(--payment-secondary-color));
+  background: #0d1117;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-page-container::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -150px; left: -150px;
+}
+
+.payment-page-container::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -150px; right: -150px;
 }
 
 .payment-page-card {
-  background: var(--payment-card-bg-color);
-  padding: 40px 30px;
+  background: var(--payment-card-bg);
+  padding: 48px 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
   text-align: center;
   max-width: 500px;
   width: 100%;
+  border: 1px solid rgba(255, 107, 53, 0.15);
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .payment-page-card h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--payment-primary-color);
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  color: #f0f6fc;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
+.payment-page-card h1 span { color: var(--payment-primary); }
+
 .payment-page-card p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: var(--payment-text-color);
+  font-size: 1.1rem;
+  margin-bottom: 36px;
+  color: #8b949e;
+  line-height: 1.7;
 }
 
 .payment-page-card button {
-  padding: 15px 40px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: var(--payment-primary-color);
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--payment-primary), var(--payment-primary-dark));
   border: none;
   color: #fff;
   cursor: pointer;
@@ -60,18 +93,23 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .payment-page-card button:hover {
-  background: var(--payment-secondary-color);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.55);
 }
 
 .payment-page-card button:disabled {
-  background: #ccc;
+  background: #21262d;
+  color: #8b949e;
   cursor: not-allowed;
   box-shadow: none;
+  transform: none;
 }
 
 .payment-page-spinner {
@@ -79,26 +117,13 @@ body {
 }
 
 @keyframes payment-page-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .payment-page-card h1 {
-    font-size: 2rem;
-  }
-
-  .payment-page-card p {
-    font-size: 1rem;
-  }
-
-  .payment-page-card button {
-    font-size: 1rem;
-    padding: 12px 30px;
-  }
+  .payment-page-card { padding: 36px 24px; }
+  .payment-page-card h1 { font-size: 1.8rem; }
+  .payment-page-card p { font-size: 1rem; }
+  .payment-page-card button { font-size: 1rem; padding: 14px 28px; }
 }

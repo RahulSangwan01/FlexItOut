@@ -1,130 +1,125 @@
 .fitflex-pricing-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 16px;
+  padding: 28px 24px;
   position: relative;
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #f0f6fc;
 }
 
 .fitflex-pricing-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(255, 107, 53, 0.2);
+  border-color: rgba(255, 107, 53, 0.3);
 }
 
 .fitflex-pricing-card-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #333;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .fitflex-pricing-card-price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2980b9; 
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ff6b35;
+  margin: 12px 0;
 }
 
 .fitflex-pricing-card-price span {
   font-size: 1rem;
-  color: #777;
+  color: #8b949e;
+  font-weight: 400;
 }
 
 .fitflex-pricing-card-button {
-  background-color: #2980b9; 
+  background: linear-gradient(135deg, #ff6b35, #cc4f1f);
   color: white;
-  border-radius: 4px;
-  padding: 12px;
-  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
 }
 
 .fitflex-pricing-card-button:hover {
-  background-color: #1e6d98; 
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 53, 0.5);
 }
 
-.fitflex-pricing-card-student,
-.fitflex-pricing-card-basic,
+.fitflex-pricing-card-student {
+  background: linear-gradient(135deg, #21262d, #161b22);
+  border-color: rgba(0, 212, 170, 0.2);
+}
+
+.fitflex-pricing-card-basic {
+  background: linear-gradient(135deg, #21262d, #161b22);
+  border-color: rgba(255, 107, 53, 0.2);
+}
+
 .fitflex-pricing-card-premium {
-  background: linear-gradient(135deg, #404040, #555555, #666666, #808080);
-
-
-  color: white;
+  background: linear-gradient(135deg, #1e1030, #161b22);
+  border-color: rgba(124, 58, 237, 0.3);
 }
 
-.fitflex-pricing-card-student:hover,
-.fitflex-pricing-card-basic:hover,
+.fitflex-pricing-card-student:hover {
+  border-color: rgba(0, 212, 170, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 212, 170, 0.15);
+}
+
+.fitflex-pricing-card-basic:hover {
+  border-color: rgba(255, 107, 53, 0.5);
+  box-shadow: 0 16px 40px rgba(255, 107, 53, 0.2);
+}
+
 .fitflex-pricing-card-premium:hover {
-  background: linear-gradient(135deg, #1f76d2, #2a8ae3, #4c90e0);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.2);
 }
-
 
 .fitflex-pricing-popular-tag {
-  background-color: #2980b9; 
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 14px;
+  background: linear-gradient(135deg, #7c3aed, #9d5cf5);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 12px;
   display: flex;
   align-items: center;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  top: -14px;
+  right: 16px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.fitflex-pricing-popular-tag svg {
-  margin-right: 8px;
-  color: #fff;
-}
+.fitflex-pricing-popular-tag svg { margin-right: 6px; color: #fff; }
 
-
-.fitflex-pricing-feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+.fitflex-pricing-feature-list { list-style: none; padding: 0; margin: 0; }
 
 .fitflex-pricing-feature-item {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  color: #c9d1d9;
 }
 
-.fitflex-pricing-feature-icon {
-  color: #3498db; 
-  margin-right: 8px;
-}
+.fitflex-pricing-feature-icon { color: #00d4aa; margin-right: 10px; flex-shrink: 0; }
 
-
-.fitflex-pricing-card {
-  margin-bottom: 20px;
-}
+.fitflex-pricing-card { margin-bottom: 20px; }
 
 @media (max-width: 600px) {
-  .fitflex-pricing-card {
-    margin-bottom: 15px;
-  }
-
-  .fitflex-pricing-card-header,
-  .fitflex-pricing-card-content {
-    padding: 16px;
-  }
+  .fitflex-pricing-card { margin-bottom: 15px; padding: 22px 18px; }
 }
-
-
-.fitflex-pricing-card-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.fitflex-pricing-card-price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2980b9; 
-}
-
-.fitflex-pricing-card-price span {
-  font-size: 1rem;
-  color: #777;
-} 
-
-

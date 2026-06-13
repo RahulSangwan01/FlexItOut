@@ -1,16 +1,106 @@
 .success-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #e0f7da;
-  }
-  
-  .success-page-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0d1117;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-page-container::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -150px; left: -150px;
+}
+
+.success-page-container::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -150px; right: -150px;
+}
+
+.success-page-card {
+  background: #161b22;
+  padding: 56px 48px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.5s ease-out;
+  max-width: 480px;
+  width: 100%;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.success-page-card h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f0f6fc;
+  margin-bottom: 12px;
+}
+
+.success-page-card p {
+  font-size: 1rem;
+  color: #8b949e;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #00d4aa;
+  margin-bottom: 24px;
+  display: block;
+  animation: popIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.success-page-card button,
+.success-page-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #00d4aa, #00a884);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 212, 170, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.success-page-card button:hover,
+.success-page-card a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 212, 170, 0.5);
+}
+
+@media (max-width: 480px) {
+  .success-page-card { padding: 36px 24px; }
+  .success-page-card h1 { font-size: 1.6rem; }
+  .success-icon { font-size: 3rem; }
+}

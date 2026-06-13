@@ -1,133 +1,167 @@
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #f39c12;
-  --background-color: #f0f4f8;
-  --text-color: #333;
+  --primary-color: #ff6b35;
+  --primary-dark: #cc4f1f;
+  --energy: #ff9f1c;
+  --success: #00d4aa;
+  --accent: #7c3aed;
+  --bg-dark: #0d1117;
+  --card-bg: #161b22;
+  --card-inner: #21262d;
+  --text-primary: #f0f6fc;
+  --text-secondary: #c9d1d9;
+  --text-muted: #8b949e;
+  --border: rgba(255, 255, 255, 0.07);
 }
 
 body {
-  font-family: "Arial", sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
 }
 
 .pose-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 .pose-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .pose-header h1 {
   font-size: 2.5rem;
   color: var(--primary-color);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .stats-container {
   display: flex;
   justify-content: space-around;
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  margin-bottom: 32px;
+  border: 1px solid rgba(255, 107, 53, 0.15);
 }
 
 .stats-container h2 {
   font-size: 1.2rem;
   margin: 0;
+  color: var(--text-primary);
 }
+
+.stats-container h2 span { color: var(--energy); }
 
 .video-container {
   position: relative;
   width: 640px;
   height: 480px;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 107, 53, 0.2);
 }
 
-.video,
-.canvas {
+.video, .canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
 }
 
 .loading-text {
   text-align: center;
   font-size: 1.2rem;
-  color: var(--secondary-color);
+  color: var(--energy);
+  margin: 20px 0;
+  font-weight: 600;
 }
 
 .leaderboard {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  margin-top: 32px;
+  border: 1px solid rgba(255, 159, 28, 0.15);
 }
 
 .leaderboard h2 {
-  color: var(--primary-color);
+  color: var(--energy);
   margin-top: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .leaderboard-entry {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: background 0.2s ease;
 }
 
-.leaderboard-entry:last-child {
-  border-bottom: none;
-}
+.leaderboard-entry:last-child { border-bottom: none; }
+.leaderboard-entry:hover { padding-left: 6px; color: var(--text-primary); }
 
 .challenges {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  margin-top: 32px;
+  border: 1px solid rgba(124, 58, 237, 0.15);
 }
 
 .challenges h2 {
-  color: var(--primary-color);
+  color: var(--accent);
   margin-top: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .challenge {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
 }
 
-.challenge:last-child {
-  border-bottom: none;
-}
+.challenge:last-child { border-bottom: none; }
 
 .challenge-button {
-  background-color: var(--secondary-color);
-  color: white;
+  background: linear-gradient(135deg, var(--energy), #e88a0a);
+  color: #1a0a00;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 7px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(255, 159, 28, 0.3);
+  width: auto;
+  margin-top: 0;
 }
 
 .challenge-button:hover {
-  background-color: #e67e22;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 159, 28, 0.45);
 }
 
+@media (max-width: 768px) {
+  .video-container { width: 100%; height: auto; aspect-ratio: 4/3; }
+  .pose-header h1 { font-size: 1.8rem; }
+  .stats-container { flex-direction: column; gap: 12px; text-align: center; }
+}
